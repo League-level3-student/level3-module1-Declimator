@@ -31,7 +31,7 @@ private int[] array;
 	//4. Complete the steps in the get method
 	public int get(int location) {
 		//A. Return the value of the member array at the location passed in
-		return array[location-1]; 
+		return array[location]; 
 	}
 	
 	//5. Run the DynamicArrayTest to see if you are correct so far.

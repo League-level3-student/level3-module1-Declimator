@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -19,24 +20,35 @@ public class _02_GuestBook implements ActionListener {
 	// Guest #2: Sandy Summers
 	// Guest #3: Greg Ganders
 	// Guest #4: Donny Doners
-	JFrame frame = new JFrame();
-	JPanel panel = new JPanel();
-	JButton button = new JButton();
-	JButton button2 = new JButton();
-	JTextField text = new JTextField();
+	JFrame frame;
+	JPanel panel;
+	JButton button;
+	JButton button2;
+	JTextField text;
 	ArrayList<String> list;
 	String input;
+	JLabel label;
 	public static void main(String[] args) {
+		_02_GuestBook guestbook = new _02_GuestBook();
+		guestbook.guestbook();
 	}
-	private void guestbook() {
+
+	public void guestbook() {
+		frame = new JFrame();
+		label = new JLabel();
+		panel = new JPanel();
+		button = new JButton();
+		button2 = new JButton();
 		list = new ArrayList<String>();
 		frame.add(panel);
+		frame.setVisible(true);
 		panel.add(button);
 		panel.add(button2);
 		button.setText("Add Name");
 		button2.setText("View Names");
 		button.addActionListener(this);
 		button2.addActionListener(this);
+		frame.pack();
 	}
 
 	@Override
@@ -48,11 +60,18 @@ public class _02_GuestBook implements ActionListener {
 		}
 		else if(e.getSource() == button2) {
 			for(int i = 0; i < list.size();i++) {
-			text.setText(list.get(i));
+				label.setText(label.getText() + "      " + list.get(i));
 			}
+			panel.add(label);
+			panel.remove(button);
+			panel.remove(button2);
+			frame.remove(panel);
+			frame.add(panel);
+			frame.pack();
+			System.out.println(label.getText());
 			
 		}
 	}
 
-	
 }
+

@@ -33,11 +33,10 @@ public class _04_RemovingStuffFromArrayLists {
 		stuffIFoundInTheYard.add(new Dirt());
 
 		System.out.println(stuffIFoundInTheYard.size());
-
 		/* TODO 1: Clean out the dirt but keep the delicious worms. */
-		for(int i = 0; i < 5; i++) {
+		for(int i = 0; i < stuffIFoundInTheYard.size(); i++) {
 			if(stuffIFoundInTheYard.get(i).type.equals("dirt")) {
-				stuffIFoundInTheYard.remove(i);
+				
 				System.out.println("test");
 			}
 			else {

@@ -13,7 +13,7 @@ public class _01_IntroToStack {
 		//2. Use a loop to push 100 random doubles between 0 and 100 to the Stack.
 		Double x;
 		for(int i = 0; i < 100; i++) {
-			x = (double) new Random().nextInt();
+			x = (double) new Random().nextInt(100);
 			stack.push(x);
 		}
 		//3. Ask the user to enter in two numbers between 0 and 100, inclusive. 
@@ -23,10 +23,16 @@ public class _01_IntroToStack {
 		int z2 = Integer.parseInt(z);
 		//4. Pop all the elements off of the Stack. Every time a double is popped that is
 		//   between the two numbers entered by the user, print it to the screen.
-		for(int i = 0; i < stack.capacity(); i++) {
-			System.out.println(i);
+		System.out.println(stack.capacity());
+		if(y2> 100 || z2 > 100) {
+			System.out.println("error");
+		}
+		else {
+		while(!stack.isEmpty()) {
+			Double a = stack.peek();
+			a = stack.pop();
 			if(y2>=z2) {
-				if(stack.get(i)>= y2 && stack.get(i) <= z2) {
+				if(a<= y2 && a >= z2) {
 					System.out.println(stack.pop());
 				}
 				else {
@@ -34,7 +40,7 @@ public class _01_IntroToStack {
 				}
 			}
 			else if (y2<z2){
-				if(stack.get(i)>= z2 && stack.get(i) <= y2) {
+				if(a <= z2 && a >= y2) {
 					System.out.println(stack.pop());
 				}
 				else {
@@ -42,7 +48,7 @@ public class _01_IntroToStack {
 				}
 			}
 		}
-		
+		}
 		
 		//   EXAMPLE:
 		//   NUM 1: 65

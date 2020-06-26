@@ -43,6 +43,8 @@ public class _02_TextUndoRedo implements KeyListener {
 		if(arg0.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 			System.out.println(label.getText().length());
 			System.out.println(label.getText().charAt(label.getText().length()-1));
+			String s = label.getText();
+			label.setText(label.getText());
 			}
 		else {
 			label.setText(label.getText() + arg0.getKeyChar());

@@ -2,6 +2,7 @@ package _04_HangMan;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class HangMan{
@@ -20,6 +21,7 @@ public class HangMan{
 		panel.add(label);
 		frame.setSize(1080,512);
 		frame.setVisible(true);
+		String s = JOptionPane.showInputDialog("Enter a number between 1 and 266");
 	}
 	
 }

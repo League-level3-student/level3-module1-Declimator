@@ -36,25 +36,7 @@ public class HangMan {
 		frame.setVisible(true);
 		Start();
 		getString();
-		while (wordslist.isEmpty() != true || remaining > 0) {
-			if (remaining == 0) {
-				visual = " ";
-				right = " ";
-				wrong = " ";
-				getString();
-			}
-			guess(JOptionPane.showInputDialog("guess a letter"));
-			if (lives == 0) {
-				int j = JOptionPane.showConfirmDialog(null, "GAME OVER! Play Again?");
-				if(j == 0) {
-					Start();
-				}
-				break;
-			}
-		}
-		if (lives > 0) {
-			System.out.println("YOU WIN!");
-		}
+		Game();
 	}
 
 	public void getString() {
@@ -88,7 +70,11 @@ public class HangMan {
 		}
 	}
 	public void Start() {
-		String s = JOptionPane.showInputDialog("Enter a number between 1 and 266");
+		right = " ";
+		wrong = " ";
+		visual = " ";
+		lives = 3;
+		String s = JOptionPane.showInputDialog("Enter a number between 1 and 266.");
 		int words = Integer.parseInt(s);
 		for (int i = 0; i < words; i++) {
 			word3 = u.readRandomLineFromFile("dictionary.txt");
@@ -96,6 +82,36 @@ public class HangMan {
 				word3 = u.readRandomLineFromFile("dictionary.txt");
 			}
 			wordslist.push(word3);
+		}
+		getString();
+		Game();
+	}
+	public void Game() {
+		while (wordslist.isEmpty() != true || remaining > 0) {
+			if (remaining == 0) {
+				visual = " ";
+				right = " ";
+				wrong = " ";
+				getString();
+			}
+			String s = JOptionPane.showInputDialog("guess a letter.");
+			while(s.length() > 1) {
+				s = JOptionPane.showInputDialog("You can only guess a single letter.");
+			}
+			guess(s);
+			if (lives == 0) {
+				int j = JOptionPane.showConfirmDialog(null, "Game Over! Play Again?");
+				if(j == 0) {
+					Start();
+				}
+				break;
+			}
+		}
+		if (lives > 0) {
+			int j = JOptionPane.showConfirmDialog(null, "You Win! Play Again?");
+			if(j == 0) {
+				Start();
+			}
 		}
 	}
 }
